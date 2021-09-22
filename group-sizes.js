@@ -1,15 +1,17 @@
 const prompt = require('prompt-sync')();
 const classSize = Number(prompt('How many students are in your class? '));
-const groupSize = Number(prompt('How many students should be in each group? '));
-const remainder = Number(classSize % groupSize);
+const groupSize = Number(3);
 
-console.log('Class Size: ', classSize);
-console.log('Number of groups of 3: ', ((classSize - remainder) / groupSize));
-console.log('Number of people not in groups: ', remainder);
-if (remainder === 1) {
-    console.log("We have 1 group of 1");
-}else if (remainder === 2) {
-    console.log("We have 1 group of 2");
-}else if (remainder <= 3) {
-    console.log("No short groups");
+
+if (classSize % 3 === 0) {
+    console.log(classSize / 3, 'groups of three');
+}else if (classSize % 3 === 1) {
+    const numGroups3 = (classSize - 4) / 3;
+    const numGroups2 = 2;
+    console.log(numGroups3, 'groups of three and ', numGroups2, 'groups of two.');
+}else if (classSize % 3 === 2) {
+    const numGroups3 = (classSize - 2) / 3;
+    const numGroups2 = 1;
+    console.log(numGroups3, 'groups of three and ', numGroups2, 'groups of two.');
+    
 }
